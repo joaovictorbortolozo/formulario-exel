@@ -14,7 +14,7 @@
         Nome: <input name="nome" maxlength="13" required><br>
         Telefone: <input type="tel" maxlength="15" name="telefone" required><br>
         Email:<input name="email" maxlength="50"><br>
-        cidade:<input name="cidade" maxlength="40"><br>
+        Cidade:<input name="cidade" maxlength="40"><br>
         Estado:<select id="estado" name="estado">
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>
@@ -48,5 +48,33 @@
         <br>
         <button type="submit">Salvar Cliente</button>
     </form>
+
+
+    <?php
+    $arquivo = fopen("clientes.csv", "r");
+    //$conteudo = fread ($arquivo,filesize("clientes.csv"));
+    //echo $conteudo;
+    while (!feof($arquivo)) {
+        $linha = fgets($arquivo);
+        $registro = explode(",", $linha);
+        if ($registro[0] != "") {
+            echo $registro[0] . " - ";
+            echo $registro[1] . " - ";
+            echo $registro[2] . " - ";
+            echo $registro[3] . " - ";
+            echo $registro[4] . "<br>";
+        }
+    }
+    fclose($arquivo);
+    ?>
+    <script>
+        <?php
+        $msg = $_GET["mensagem"] ?? "";
+        if ($msg == "salvo") {
+            echo "alert ('cliente salvo com sucesso!')";
+        }
+        ?>
+    </script>
 </body>
+
 </html>

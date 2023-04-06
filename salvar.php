@@ -10,10 +10,10 @@ $arquivo = fopen("clientes.csv", "a");
 fwrite($arquivo, $nome . ",");
 fwrite($arquivo, $cidade . ",");
 fwrite($arquivo, $estado . ",");
-fwrite($arquivo, $eamil. ",");
+fwrite($arquivo, $email. ",");
 fwrite($arquivo, $telefone . "\n");
 
 fclose($arquivo);
 
-header("location:index.php");
+header("location:index.php?mensagem=salvo");
 ?>
